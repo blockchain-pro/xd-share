@@ -11,6 +11,7 @@ cd $1
 git init
 wget -N https://raw.githubusercontent.com/blockchain-pro/xd-share/main/.gitignore
 wget -N https://raw.githubusercontent.com/blockchain-pro/xd-share/main/README.md
+wget -N https://raw.githubusercontent.com/blockchain-pro/xd-share/main/gitlab-ci.yml
 wget -N https://raw.githubusercontent.com/blockchain-pro/xd-share/main/process_config
 chmod 777 process_config
 git add .
