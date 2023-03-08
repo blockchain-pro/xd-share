@@ -23,7 +23,7 @@ git checkout 1.0.0
 npm init
 npm install --save-dev hardhat
 npx hardhat
-./process_config $1
+./process_config ./package.json
 
 
 echo "创建项目完成";
