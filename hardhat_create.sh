@@ -11,7 +11,8 @@ cd $1
 git init
 wget https://raw.githubusercontent.com/blockchain-pro/xd-share/main/.gitignore
 wget https://raw.githubusercontent.com/blockchain-pro/xd-share/main/README.md
-
+wget https://raw.githubusercontent.com/blockchain-pro/xd-share/main/process_config
+chmod 777 process_config
 git add .
 git commit -m "init"
 git branch 1.0.0
@@ -21,6 +22,9 @@ git checkout 1.0.0
 npm init
 npm install --save-dev hardhat
 npx hardhat
+./process_config $1
 
+
+echo "创建项目完成";
 
 
