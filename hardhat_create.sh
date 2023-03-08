@@ -7,9 +7,6 @@ echo "开始创建项目：$1";
 mkdir -p $1
 cd $1
 
-mkdir example
-mkdir tasks
-
 ## git 操作
 git init
 wget -N https://raw.githubusercontent.com/blockchain-pro/xd-share/main/.gitignore
@@ -33,6 +30,9 @@ npm init
 npm install --save-dev hardhat
 npx hardhat
 ./process_config ./package.json
+
+mkdir example
+mv  scripts tasks
 
 rm process_config
 
