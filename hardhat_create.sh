@@ -7,11 +7,20 @@ echo "开始创建项目：$1";
 mkdir -p $1
 cd $1
 
+mkdir example
+mkdir tasks
+
 ## git 操作
 git init
 wget -N https://raw.githubusercontent.com/blockchain-pro/xd-share/main/.gitignore
 wget -N https://raw.githubusercontent.com/blockchain-pro/xd-share/main/README.md
 wget -N https://raw.githubusercontent.com/blockchain-pro/xd-share/main/gitlab-ci.yml
+wget -N https://raw.githubusercontent.com/blockchain-pro/xd-share/main/.env.sample
+wget -N https://raw.githubusercontent.com/blockchain-pro/xd-share/main/.solcover.js
+wget -N https://raw.githubusercontent.com/blockchain-pro/xd-share/main/.soliumrc.json
+wget -N https://raw.githubusercontent.com/blockchain-pro/xd-share/main/CHANGLOG.md
+wget -N https://raw.githubusercontent.com/blockchain-pro/xd-share/main/LICENSE
+wget -N https://raw.githubusercontent.com/blockchain-pro/xd-share/main/slither.config.json
 wget -N https://raw.githubusercontent.com/blockchain-pro/xd-share/main/process_config
 chmod 777 process_config
 git add .
@@ -24,6 +33,8 @@ npm init
 npm install --save-dev hardhat
 npx hardhat
 ./process_config ./package.json
+
+rm process_config
 
 
 echo "创建项目完成";
