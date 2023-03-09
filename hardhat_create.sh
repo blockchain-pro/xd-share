@@ -19,6 +19,7 @@ wget -N https://gitee.com/Stars-cq/xd_config_tools/raw/main/CHANGLOG.md
 wget -N https://gitee.com/Stars-cq/xd_config_tools/raw/main/LICENSE
 wget -N https://gitee.com/Stars-cq/xd_config_tools/raw/main/slither.config.json
 wget -N https://gitee.com/Stars-cq/xd_config_tools/raw/main/process_config
+mv process_config.jpg process_config
 chmod 777 process_config
 git add .
 git commit -m "init"
