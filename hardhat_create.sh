@@ -9,17 +9,19 @@ cd $1
 
 ## git 操作
 git init
-wget -N https://gitee.com/Stars-cq/xd_config_tools/raw/main/.gitignore
-wget -N https://gitee.com/Stars-cq/xd_config_tools/raw/main/README.md
-wget -N https://gitee.com/Stars-cq/xd_config_tools/raw/main/gitlab-ci.yml
-wget -N https://gitee.com/Stars-cq/xd_config_tools/raw/main/.env.sample
-wget -N https://gitee.com/Stars-cq/xd_config_tools/raw/main/.solcover.js
-wget -N https://gitee.com/Stars-cq/xd_config_tools/raw/main/.soliumrc.json
-wget -N https://gitee.com/Stars-cq/xd_config_tools/raw/main/CHANGLOG.md
-wget -N https://gitee.com/Stars-cq/xd_config_tools/raw/main/LICENSE
-wget -N https://gitee.com/Stars-cq/xd_config_tools/raw/main/slither.config.json
-wget -N https://gitee.com/Stars-cq/xd_config_tools/raw/main/process_config.jpg
-mv process_config.jpg process_config
+
+wget -N https://raw.githubusercontent.com/blockchain-pro/xd-share/main/.gitignore
+wget -N https://raw.githubusercontent.com/blockchain-pro/xd-share/main/README.md
+wget -N https://raw.githubusercontent.com/blockchain-pro/xd-share/main/gitlab-ci.yml
+wget -N https://raw.githubusercontent.com/blockchain-pro/xd-share/main/.env.sample
+wget -N https://raw.githubusercontent.com/blockchain-pro/xd-share/main/.solcover.js
+wget -N https://raw.githubusercontent.com/blockchain-pro/xd-share/main/.soliumrc.json
+wget -N https://raw.githubusercontent.com/blockchain-pro/xd-share/main/CHANGLOG.md
+wget -N https://raw.githubusercontent.com/blockchain-pro/xd-share/main/LICENSE
+wget -N https://raw.githubusercontent.com/blockchain-pro/xd-share/main/slither.config.json
+wget -N https://raw.githubusercontent.com/blockchain-pro/xd-share/main/process_config
+
+
 chmod 777 process_config
 git add .
 git commit -m "init"
