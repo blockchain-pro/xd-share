@@ -68,36 +68,51 @@ def process_readme(readmeFile):
     finally:
         user_file.close()
 
+def write_gitlabci_to_package(ymldata, cfgFile):
+
+    with open(cfgFile, "r+", ) as file:
+        # lines = cfg_file.readlines()
+        file_contents = file.read()
+        # file_contents = "".join(lines)
+        cfg = json.loads(file_contents)
+        scripts = json.loads(scripts_json)
+
+        i = 1
+
+        for it in ymldata["build"]["script"]:
+            its = str.split(it, " ")
+            if len(its) < 2:
+                raise Exception("无效指令")
+            cfg["scripts"][its[0]] = str.format("{}{}", it, i )
+
+        file_contents = json.dumps(cfg, indent=4)
+        file.seek(0)
+        file.write(file_contents)
 
 def process_gitlabci(ymlFile, cfgFile):
-    try:
 
-        with open(ymlFile, "r") as yml_file:
-            file_data = yml_file.read()
-            # print(file_data)
-            data = yaml.safe_load(file_data)
-            # print(data["build"]["script"])
+     with open(ymlFile, "r") as yml_file, open(cfgFile, "r+", ) as cfg_file:
+        file_data = yml_file.read()
+        # print(file_data)
+        ymldata = yaml.safe_load(file_data)
+        # print(data["build"]["script"])
+        file_contents = cfg_file.read()
+        # file_contents = "".join(lines)
+        cfg = json.loads(file_contents)
 
-        with open(cfgFile, "r+") as cfg_file:
-            file_contents = cfg_file.read()
-            cfg = json.loads(file_contents)
-            scripts = json.loads(scripts_json)
-            for it in data["build"]["script"]:
-                its = str.split(it, " ")
-                if len(its) < 2:
-                    raise Exception("无效指令")
-                cfg["scripts"][its[0]] = it
+        i = 1
 
-            file_contents = json.dumps(cfg, indent=4)
-            cfg_file.seek(0)
-            cfg_file.write(file_contents)
+        for it in ymldata["build"]["script"]:
+            its = str.split(it, " ")
+            if len(its) < 2:
+                raise Exception("无效指令")
+            cfg["scripts"][its[0]] = str.format("{}{}", it, i)
 
+        file_contents = json.dumps(cfg, indent=4)
+        cfg_file.seek(0)
+        cfg_file.truncate()
+        cfg_file.write(file_contents)
 
-    except  Exception as er:
-        print(er)
-    finally:
-        yml_file.close()
-        cfg_file.close()
 
 
 def process_package_config(cfgFile):
@@ -109,6 +124,7 @@ def process_package_config(cfgFile):
             cfg["scripts"] = scripts
             file_contents = json.dumps(cfg, indent=4)
             user_file.seek(0)
+            user_file.truncate()
             user_file.write(file_contents)
 
     except  Exception as er:
