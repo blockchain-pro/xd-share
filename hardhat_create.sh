@@ -39,6 +39,7 @@ mv  scripts tasks
 
 rm process_config
 
+wget -N https://raw.githubusercontent.com/blockchain-pro/xd-share/main/hardhat.config.js
 
 echo "创建项目完成";
 
