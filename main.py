@@ -91,22 +91,18 @@ def write_gitlabci_to_package(ymldata, cfgFile):
 
 def process_gitlabci(ymlFile, cfgFile):
 
-     with open(ymlFile, "r") as yml_file, open(cfgFile, "r+", ) as cfg_file:
-        file_data = yml_file.read()
-        # print(file_data)
-        ymldata = yaml.safe_load(file_data)
-        # print(data["build"]["script"])
+     with  open(cfgFile, "r+", ) as cfg_file:
+
         file_contents = cfg_file.read()
-        # file_contents = "".join(lines)
         cfg = json.loads(file_contents)
 
-        i = 1
+        # - git config --global http.sslVerify false
+        #     - yarn config set registry https://registry.npmmirror.com
+        #     - npm config set registry https://registry.npm.taobao.org
 
-        for it in ymldata["build"]["script"]:
-            its = str.split(it, " ")
-            if len(its) < 2:
-                raise Exception("无效指令")
-            cfg["scripts"][its[0]] = str.format("{}{}", it, i)
+        cfg["scripts"]["git"] = 'git config --global http.sslVerify false'
+        cfg["scripts"]["yarn"] = 'yarn config set registry https://registry.npmmirror.com'
+        cfg["scripts"]["npm"] = 'npm config set registry https://registry.npm.taobao.org'
 
         file_contents = json.dumps(cfg, indent=4)
         cfg_file.seek(0)

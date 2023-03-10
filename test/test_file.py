@@ -8,12 +8,13 @@ if __name__ == '__main__':
         file_data = yml_file.read()
         # print(file_data)
         ymldata = yaml.safe_load(file_data)
-        i = 0
+        i = 1
         for it in ymldata["build"]["script"]:
             its = str.split(it, " ")
             if len(its) < 2:
                 raise Exception("无效指令")
-            print( "".format("{}{}", it, i ))
+            print( "{}{}".format(its[0], i ))
+            i = i +1
 
 
         # lines = cfg_file.readlines()
