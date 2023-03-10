@@ -46,7 +46,7 @@ def process_readme(readmeFile):
     try:
 
         package_info = get_package_info()
-        
+
         with open(readmeFile, "r+") as user_file:
             lines = user_file.readlines()
 
